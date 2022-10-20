@@ -1,0 +1,22 @@
+import seaborn as sns; sns.set_theme(color_codes=True)
+import pandas as pd 
+import matplotlib.pyplot as plt
+
+x = [34620.35, 34620.36, 34620.37, 34620.38, 34620.39, 34620.40, 34620.41]
+y = [62.25, 60.938, 56.25, 49.125, 41.688, 36.688, 30.25]
+x1 = [34620.46]
+y1 = [0]
+
+time = x
+frequency = y
+
+fig, ax = plt.subplots()
+xlim = [34620.00,34620.50]
+ax.set_xlim(xlim)
+
+x, y = pd.Series(x, name="Time (s)"), pd.Series(y, name="Frequency (MHz)")
+ax = sns.regplot(x, y, marker="+", ci=95, truncate=False, ax=ax)
+ax = sns.regplot(x1, y1)
+
+plt.title("Graph of event 5th May 2021")
+plt.show() 
